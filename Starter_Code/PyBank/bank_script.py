@@ -24,6 +24,7 @@ with open(csvpath) as csvfile:
         this_month = int(row[1])
         total_profit += int(this_month)
         change = this_month - last_month
+        # skips first line of data, and saves last months value for change calculation
         if change_counter > 1:
             change_total += change
             last_month = this_month
@@ -40,9 +41,10 @@ with open(csvpath) as csvfile:
             greatest_decrease["value"] = change
             greatest_decrease["month"] = month
         
-# calculates average change and rounds it to a dollar value
+# calculates average change and rounds it to a dollar value for readability
 change_average = round(change_total / (change_counter - 1), 2)
 
+# prints to terminal
 print("Financial Analysis")
 
 print("______________________")
