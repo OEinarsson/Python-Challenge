@@ -42,8 +42,15 @@ for candidate, votes in candidate_catalouge.items():
 # selects winner
     if votes == max(candidate_catalouge.values()):
         winner = candidate
-print()    
-print(f"Our winner is: {winner} with {max_percentage: .0%} of the votes!!")
+print()   
+print(max_percentage) 
+# print(f"Our winner is: {winner} with {max_percentage: .0%} of the votes!!")
+if max_percentage > 70:
+    print(f"Our winner, by a landslide is {winner} with an astonishing {max_percentage: .0%} of the votes!!")
+elif max_percentage > 60:
+    print(f"The crowd favorite today is {winner} with {max_percentage: .0%} of the votes!!")
+else:
+    print(f"Our winner today is: {winner} with {max_percentage: .0%} of the votes!!")
 
 # establishes output file
 output_path = os.path.join("election_results.csv")
