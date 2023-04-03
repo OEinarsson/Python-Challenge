@@ -43,14 +43,18 @@ for candidate, votes in candidate_catalouge.items():
     if votes == max(candidate_catalouge.values()):
         winner = candidate
 print()   
-print(max_percentage) 
-# print(f"Our winner is: {winner} with {max_percentage: .0%} of the votes!!")
-if max_percentage > 70:
+
+# prints a custom message based on the percentage of votes achieved)
+if max_percentage >= .7:
     print(f"Our winner, by a landslide is {winner} with an astonishing {max_percentage: .0%} of the votes!!")
-elif max_percentage > 60:
+elif max_percentage >= .6:
     print(f"The crowd favorite today is {winner} with {max_percentage: .0%} of the votes!!")
+elif max_percentage >= .5:
+    print(f"Looks like half of you will be happy today, the winnder is {winner} with {max_percentage: .0%} of the votes!!")
+elif max_percentage >= .4:
+    print(f"Todays happy winner is {winner} with {max_percentage: .0%} of the votes!!")
 else:
-    print(f"Our winner today is: {winner} with {max_percentage: .0%} of the votes!!")
+    print(f"By the skin of their teethe, our winner is {winner} with {max_percentage: .0%} of the votes!!")
 
 # establishes output file
 output_path = os.path.join("election_results.csv")
@@ -76,7 +80,16 @@ with open(output_path, 'w') as csvfile:
         if votes == max(candidate_catalouge.values()):
             winner = candidate
     csvwriter.writerow([])    
-    csvwriter.writerow([f"Our winner is: {winner} with {max_percentage: .0%} of the votes!!"])   
+    if max_percentage >= .7:
+        csvwriter.writerow([f"Our winner, by a landslide is {winner} with an astonishing {max_percentage: .0%} of the votes!!"])
+    elif max_percentage >= .6:
+        csvwriter.writerow([f"The crowd favorite today is {winner} with {max_percentage: .0%} of the votes!!"])
+    elif max_percentage >= .5:
+        csvwriter.writerow([f"Looks like half of you will be happy today, the winnder is {winner} with {max_percentage: .0%} of the votes!!"])
+    elif max_percentage >= .4:
+        csvwriter.writerow([f"Todays happy winner is {winner} with {max_percentage: .0%} of the votes!!"])
+    else:
+        csvwriter.writerow([f"By the skin of their teethe, our winner is {winner} with {max_percentage: .0%} of the votes!!"])  
 
 
 
